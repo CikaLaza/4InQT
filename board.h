@@ -7,7 +7,11 @@ class Board
 {
 public:
 
+    const static int BoardColumns = 7;
+    const static int BoardRows = 6;
+
     enum Players {
+        PlayerUnknown = 0,
         PlayerRed,
         PlayerYellow
     };
@@ -22,9 +26,15 @@ public:
     Players getActivePlayer();
     void switchPlayer();
 
+    bool checkWin(int, int);
+
 private:
     Board();
     void printout();
+
+    bool checkVerticalWin(int, int);
+    bool checkHorizontallWin(int, int);
+    bool checkDiagonalWin(int, int);
 
     std::vector< std::vector<int> > board;
     Players activePlayer;

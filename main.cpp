@@ -32,6 +32,7 @@ int main(int argc, char *argv[])
 
     QObject::connect(window, SIGNAL(onTableClick(int)), &connector, SLOT(onTableClick(int)));
     QObject::connect(&reader, SIGNAL(movePlayed(int, int, int)), window, SIGNAL(movePlayed(int, int, int)));
+    QObject::connect(&reader, SIGNAL(victory(int)), window, SIGNAL(victory(int)));
 
     return app.exec();
 }

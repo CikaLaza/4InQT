@@ -31,12 +31,16 @@ void QMLResponsehandler::loop()
             if (row >= 0)
             {
                 Board::getInstance().playMove(row, value, player);
-                Board::getInstance().switchPlayer();
             }
             else {
                 // error
             }
             emit movePlayed(value, row, (int)player);
+
+            if (Board::getInstance().checkWin(row, value) )
+                emit victory((int)player);
+
+            Board::getInstance().switchPlayer();
         }
     }
 }

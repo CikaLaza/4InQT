@@ -42,6 +42,11 @@ Window {
         }
     }
 
+    signal victory(int player)
+    onVictory: {
+        console.log("Victory")
+    }
+
     property int droppingCnt: 0
     function onDroppingTimerTriggered()
     {

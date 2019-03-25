@@ -21,6 +21,7 @@ public:
 
 signals:
     void movePlayed(int, int, int);
+    void victory(int);
 
 private:
     SharedQueue<int>* queue;
