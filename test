@@ -1,0 +1,42 @@
+{
+    for (unsigned i = 0; i < vertical.size(); i++)
+    {
+        unsigned sum = 0, empty = vertical[i].size() - 1;
+
+        for (int item : vertical[i]) {
+            sum += item;
+        }
+
+        if (size == (sum + empty))
+        {
+            unsigned cnt = 0;
+            for (int item : vertical[i])
+            {
+                for (unsigned j = 0; j < item; j++, cnt++)
+                    sendHit(size * cnt + i);
+                sendMiss(size * cnt + i);
+                cnt++;
+            }
+        }
+
+        // Middle
+
+        for (int item : vertical[i])
+        {
+            switch (item) {
+            case 5:
+                sendHit(i);
+                sendHit(size * 4 + i);
+            case 4:
+                sendHit(size + i);
+                sendHit(size * 3 + i);
+            case 3:
+                sendHit(size * 2 + i);
+                break;
+            default:
+                break;
+            }
+        }
+
+    }
+}
